@@ -8,7 +8,7 @@ def two_sum(nums, target):
             if nums[i] + nums[j] == target:
                 return [i, j]
 
-# second solution O(n)
+# second solution O(nlogn)
 def two_sum2(nums, target):
     sorted_idxes = np.argsort(nums)
     sorted_nums = np.array(nums)[sorted_idxes]
