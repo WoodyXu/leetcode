@@ -1,14 +1,18 @@
 import math
+import numpy as np
 
-def is_integer_overflow(x):
-    if x > 2 ** 31 - 1 or x < - 2 ** 31:
+RANGE = np.iinfo("int32")
+MIN_VALUE, MAX_VALUE = RANGE.min, RANGE.max
+
+def is_integer32_overflow(x):
+    if x > MAX_VALUE or x < MIN_VALUE:
         return True
     else:
         return False
 
 def reverse(x):
     is_positive = True
-    if x == 0 or is_integer_overflow(x):
+    if x == 0 or is_integer32_overflow(x):
         return 0
     elif x < 0:
         is_positive = False
@@ -24,7 +28,7 @@ def reverse(x):
     if is_positive is False:
         result *= -1
 
-    return 0 if is_integer_overflow(result) else result
+    return 0 if is_integer32_overflow(result) else result
 
 if __name__ == "__main__":
     assert reverse(123) == 321
